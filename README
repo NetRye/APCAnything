@@ -1,8 +1,8 @@
-# APC UPS Management Script
+# APC UPS Management Script ##
 
 This script provides a convenient way to manage APC UPS devices (or devices from other vendors) by establishing an SSH connection and running commands on each device. It utilizes an Excel file as a configuration source, allowing you to easily customize the commands to be executed for each device.
 
-## Prerequisites
+## Prerequisites ##
 
 Before running the script, make sure you have the following dependencies installed:
 
@@ -13,19 +13,21 @@ Before running the script, make sure you have the following dependencies install
 
 If any of the dependencies are missing or have an incorrect version, the script will attempt to install the correct version automatically.
 
-## Usage
+## Usage ##
 
 1. Place the script in your desired location.
 2. Open a command prompt or terminal and navigate to the directory where the script is located.
 3. Execute the script using the command `python script_name.py`.
-4. The script will prompt you to select an Excel file containing the device configuration. Make sure the Excel file follows the required format (described below).
-5. Enter your password when prompted. This password will be used to authenticate the SSH connection to each device.
-6. The script will establish an SSH connection to each device and execute the specified commands for each device.
-7. The output of each command will be logged to a separate log file in the same directory as the script.
+4. The script will try to install the required dependencies, you may need to run it twice.
+5. The script will prompt you to select an Excel file containing the device configuration. Make sure the Excel file follows the required format (described below).
+6. Enter your password when prompted. This password will be used to authenticate the SSH connection to each device.
+7. The script will establish an SSH connection to each device and execute the specified commands within the excel file and the hardcoded loop for each device.
+8. The output of each command will be logged to a separate log file in the same directory as the script.
 
 ## Excel Configuration
 
-The script expects the device configuration to be provided in an Excel file. The Excel file should contain a sheet with the following two columns:
+The script expects Hostnames and Commands to be provided in an Excel file. The Excel file should contain a sheet with the following two columns:
+The excel file is usefull to execute different commands instead of the same commands hardcoded in the loop.
 
 - **Hostnames**: This column should contain the hostname or IP address of each device.
 - **Commands**: This column should contain the commands to be executed on each device. Multiple commands can be specified for each device by separating them with a semicolon (`;`).
@@ -36,8 +38,8 @@ Ensure that the Excel file is accessible and the sheet containing the configurat
 
 The script can be customized to fit your specific needs. Here are some possible modifications:
 
-- Same Commands per all devices can be Adjusted the commands executed for each device by modifying the code within the loop that iterates through the data.
-- Different Commands per all devices can be adjusted with the excel file. For example if you wish to re ip address a list of UPS's; You can edit the excel file. 
+- Same Commands per all devices can be adjusted by modifying the code within the loop that iterates through the data.
+- Different Commands per all devices can be adjusted with the excel file. For example if you wish to re ip address a list of UPS's; You can edit the excel file to apply the new ip command for the hostname of your choice. 
 - Update the list of dependencies (`dependencies`) to include any additional modules required for your environment.
 - Modify the `excel_file_path` variable to specify the path to your Excel file if you want to bypass the file selection prompt.
 
