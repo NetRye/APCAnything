@@ -1,8 +1,8 @@
-# APC UPS Management Script ##
+# APC UPS Management Script
 
 This script provides a convenient way to manage APC UPS devices (or devices from other vendors) by establishing an SSH connection and running commands on each device. It utilizes an Excel file as a configuration source, allowing you to easily customize the commands to be executed for each device.
 
-## Prerequisites ##
+## Prerequisites
 
 Before running the script, make sure you have the following dependencies installed:
 
@@ -13,7 +13,7 @@ Before running the script, make sure you have the following dependencies install
 
 If any of the dependencies are missing or have an incorrect version, the script will attempt to install the correct version automatically.
 
-## Usage ##
+## Usage
 
 1. Place the script in your desired location.
 2. Open a command prompt or terminal and navigate to the directory where the script is located.
