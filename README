@@ -1,4 +1,4 @@
- # Network Device Configuration Script with SSH (APC UPS Management)
+# Network Device Configuration Script with SSH (APC UPS Management)
 
 This Python script automates the management of APC UPS devices, or any network device that supports SSH connections. It utilizes SSH connections and the `wexpect` library to interact with the devices and execute commands.
 
