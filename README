@@ -1,0 +1,52 @@
+# APC UPS Management Script
+
+This script provides a convenient way to manage APC UPS devices (or devices from other vendors) by establishing an SSH connection and running commands on each device. It utilizes an Excel file as a configuration source, allowing you to easily customize the commands to be executed for each device.
+
+## Prerequisites
+
+Before running the script, make sure you have the following dependencies installed:
+
+- **wexpect**: version 4.0.0
+- **getpass**: latest version
+- **pandas**: latest version
+- **tkinter.filedialog**: latest version
+
+If any of the dependencies are missing or have an incorrect version, the script will attempt to install the correct version automatically.
+
+## Usage
+
+1. Place the script in your desired location.
+2. Open a command prompt or terminal and navigate to the directory where the script is located.
+3. Execute the script using the command `python script_name.py`.
+4. The script will prompt you to select an Excel file containing the device configuration. Make sure the Excel file follows the required format (described below).
+5. Enter your password when prompted. This password will be used to authenticate the SSH connection to each device.
+6. The script will establish an SSH connection to each device and execute the specified commands for each device.
+7. The output of each command will be logged to a separate log file in the same directory as the script.
+
+## Excel Configuration
+
+The script expects the device configuration to be provided in an Excel file. The Excel file should contain a sheet with the following two columns:
+
+- **Hostnames**: This column should contain the hostname or IP address of each device.
+- **Commands**: This column should contain the commands to be executed on each device. Multiple commands can be specified for each device by separating them with a semicolon (`;`).
+
+Ensure that the Excel file is accessible and the sheet containing the configuration is named correctly.
+
+## Customization
+
+The script can be customized to fit your specific needs. Here are some possible modifications:
+
+- Update the list of dependencies (`dependencies`) to include any additional modules required for your environment.
+- Modify the `excel_file_path` variable to specify the path to your Excel file if you want to bypass the file selection prompt.
+- Adjust the commands executed for each device by modifying the code within the loop that iterates through the data.
+- Customize the output log file names or paths to suit your preferences.
+
+Please note that the current version of the script only includes informational commands and does not modify any settings on the devices. If you wish to modify the commands, ensure that you have a thorough understanding of the commands and their potential impact on the devices.
+
+## Disclaimer
+
+This script is provided as-is and OpenAI assumes no responsibility for any damages or issues that may arise from its use. It is recommended to test the script in a controlled environment before applying it to a production environment.
+
+Use this script responsibly and ensure that you have proper authorization and permissions to access and manage the devices.
+
+If you encounter any issues or have any questions, please contact the script author or seek support from relevant communities or forums.
