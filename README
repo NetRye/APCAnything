@@ -2,55 +2,56 @@
 
 This script provides a convenient way to manage APC UPS devices (or devices from other vendors) by establishing an SSH connection and running commands on each device. It utilizes an Excel file as a configuration source, allowing you to easily customize the commands to be executed for each device.
 
+# Network Device Configuration Script with SSH and Dependencies
+
+This Python script automates the execution of configuration commands on network devices. It utilizes SSH connections and the `wexpect` library to interact with the devices. Additionally, the script checks for required dependencies and installs them if necessary.
+
 ## Prerequisites
 
-Before running the script, make sure you have the following dependencies installed:
+Before running this script, make sure you have the following:
 
-- **wexpect**: version 4.0.0
-- **getpass**: latest version
-- **pandas**: latest version
-- **tkinter.filedialog**: latest version
+1. Python: Ensure that Python is installed on your system. You can download Python from the official Python website (https://www.python.org) and follow the installation instructions.
 
-If any of the dependencies are missing or have an incorrect version, the script will attempt to install the correct version automatically.
+2. Example Excel File: An example Excel file named "devices.xlsx" is included in the repository to help you understand the required format. You can find it in the same location where you found this script. You can use this file as a template and modify it according to your network devices and configuration needs.
 
 ## Usage
 
-1. Place the script in your desired location.
-2. Open a command prompt or terminal and navigate to the directory where the script is located.
-3. Execute the script using the command `python script_name.py`.
-4. The script will try to install the required dependencies, you may need to run it twice.
-5. The script will prompt you to select an Excel file containing the device configuration. Make sure the Excel file follows the required format (described below).
-6. Enter your password when prompted. This password will be used to authenticate the SSH connection to each device.
-7. The script will establish an SSH connection to each device and execute the specified commands within the excel file and the hardcoded loop for each device.
-8. The output of each command will be logged to a separate log file in the same directory as the script.
+1. Check Dependencies: The script checks for the required dependencies specified in the `dependencies` list. If any dependencies are missing or have an incorrect version, the script automatically installs the correct version using `pip`.
 
-## Excel Configuration
+2. Import Libraries: The script imports the necessary libraries, including `wexpect`, `getpass`, `pandas`, and `tkinter.filedialog`.
 
-The script expects Hostnames and Commands to be provided in an Excel file. The Excel file should contain a sheet with the following two columns:
-The excel file is usefull to execute different commands instead of the same commands hardcoded in the loop.
+3. Select Excel File: The script prompts you to select the Excel file that contains the device information and configuration commands. A file dialog window will appear, allowing you to browse and select the desired file.
 
-- **Hostnames**: This column should contain the hostname or IP address of each device.
-- **Commands**: This column should contain the commands to be executed on each device. Multiple commands can be specified for each device by separating them with a semicolon (`;`).
+4. Read Excel Data: The script uses the `pandas` library to read the selected Excel sheet into a DataFrame, making it easier to manipulate and access the data.
 
-Ensure that the Excel file is accessible and the sheet containing the configuration is named correctly.
+5. User Authentication: Enter your password when prompted by the script. This password will be used to authenticate the SSH connections to the network devices.
 
-## Customization
+6. Execute Commands: The script loops through each row in the Excel file. It establishes an SSH connection to the device, handles any fingerprint prompts, and sends the specified commands. The output of each command is logged to a separate log file.
 
-The script can be customized to fit your specific needs. Here are some possible modifications:
+7. Handle Exceptions: The script includes error handling to manage potential exceptions, such as timeouts or incorrect prompts when connecting to devices. Any encountered errors will be displayed in the terminal.
 
-- Same Commands per all devices can be adjusted by modifying the code within the loop that iterates through the data.
-- Different Commands per all devices can be adjusted with the excel file. For example if you wish to re ip address a list of UPS's; You can edit the excel file to apply the new ip command for the hostname of your choice. 
-- Update the list of dependencies (`dependencies`) to include any additional modules required for your environment.
-- Modify the `excel_file_path` variable to specify the path to your Excel file if you want to bypass the file selection prompt.
+## Output
 
-- Customize the output log file names or paths to suit your preferences.
+The script generates log files for each device in the format "{hostname}.log" in the same directory as the script. Each log file contains the output of the executed commands for the respective device.
 
-Please note that the current version of the script only includes informational commands and does not modify any settings on the devices. If you wish to modify the commands, ensure that you have a thorough understanding of the commands and their potential impact on the devices.
+Additionally, the script displays the output and error messages in the terminal in real-time, allowing you to monitor the progress and identify any issues.
+
+Review the log files and terminal messages to ensure that the configuration commands were executed successfully and to address any errors that may have occurred.
 
 ## Disclaimer
 
-This script is provided as-is and I assume no responsibility for any damages or issues that may arise from its use. It is recommended to test the script in a controlled environment before applying it to a production environment.
+This script is provided as-is and without any warranty. It is your responsibility to review and test the script before using it in a production environment. The author assumes no liability for any damages or issues arising from the use of this script.
 
-Use this script responsibly and ensure that you have proper authorization and permissions to access and manage the devices.
+Please use this script responsibly and ensure that you have appropriate permissions and authorization to access and modify network devices.
 
-If you encounter any issues or have any questions, please seek support from relevant communities or forums. Do not try to contact the script author. 
+## Example Excel File
+
+To help you get started, an example Excel file named "devices.xlsx" is included in the repository. It demonstrates the required format for the Excel file, with the "Hostnames" column containing the device hostnames and the "Commands" column containing the configuration commands.
+
+Feel free to modify this example file or create your own Excel file following the same format to suit your network devices and configuration requirements.
+
+## Conclusion
+
+This network device configuration script automates the process of executing configuration commands on network devices using SSH connections. It provides a convenient way to manage and apply commands to multiple devices simultaneously. The script also handles dependencies by checking and installing the required modules automatically.
+
+Feel free to customize the script according to your specific needs and extend its functionality.
